@@ -3,8 +3,8 @@ from django.urls import path, include
 from .views import NetworkNodeViewSet
 
 router = DefaultRouter()
-router.register(r'networknodes', NetworkNodeViewSet)
+router.register(r"networknodes", NetworkNodeViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]

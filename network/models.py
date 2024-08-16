@@ -25,15 +25,17 @@ class Product(models.Model):
 
 class NetworkNode(models.Model):
     LEVEL_CHOICES = [
-        (0, 'Завод'),
-        (1, 'Розничная сеть'),
-        (2, 'Индивидуальный предприниматель'),
+        (0, "Завод"),
+        (1, "Розничная сеть"),
+        (2, "Индивидуальный предприниматель"),
     ]
 
     name = models.CharField(max_length=100)
     contact_info = models.ForeignKey(ContactInfo, on_delete=models.CASCADE)
     level = models.IntegerField(choices=LEVEL_CHOICES)
-    supplier = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
+    supplier = models.ForeignKey(
+        "self", null=True, blank=True, on_delete=models.SET_NULL
+    )
     debt = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -43,7 +45,9 @@ class NetworkNode(models.Model):
 
 
 class ProductStock(models.Model):
-    node = models.ForeignKey(NetworkNode, related_name='products', on_delete=models.CASCADE)
+    node = models.ForeignKey(
+        NetworkNode, related_name="products", on_delete=models.CASCADE
+    )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
 
