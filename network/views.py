@@ -10,6 +10,6 @@ class NetworkNodeViewSet(viewsets.ModelViewSet):
     queryset = NetworkNode.objects.all()
     serializer_class = NetworkNodeSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
-    filterset_fields = ['contact_info__country']
-    ordering_fields = ['created_at', 'name']
+    filterset_fields = ["contact_info__country"]
+    ordering_fields = ["created_at", "name"]
     permission_classes = [IsActiveUser]
